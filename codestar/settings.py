@@ -13,9 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-
-if os.path.isfile("env.py"):
-    import env
+if os.path.isfile('env.py'):
+    import env # noqa
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +33,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     ".herokuapp.com",
-    "https://8000-gomarsdotti-databasepro-ls1c8yf2fby.ws-eu110.gitpod.io/",
+    "8000-gomarsdotti-databasepro-ls1c8yf2fby.ws-eu110.gitpod.io"
 ]
 
 
