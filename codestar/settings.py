@@ -93,6 +93,12 @@ WSGI_APPLICATION = "codestar.wsgi.application"
 
 DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
+CSRF_TRUSTED_ORIGINS = [
+    #"https://8000-gomarsdotti-databasepro-ls1c8yf2fby.ws-eu110.gitpod.io/",
+    "https://*.gitpod.io",
+    "https://*.herokuapp.com"
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
