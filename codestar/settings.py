@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-e33)mn2d6*tn&w#v32vnk$1zq0e*(g(a2v00_bu^tb!7!y4nyo
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -50,8 +50,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_summernote",
     "blog",
-    'django_summernote',
+    "about",
 ]
 
 MIDDLEWARE = [
