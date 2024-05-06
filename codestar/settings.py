@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
     "8000-gomarsdotti-databasepro-ls1c8yf2fby.ws-eu110.gitpod.io",
     "8000-gomarsdotti-databasepro-ls1c8yf2fby.ws-eu112.gitpod.io",
     "8000-gomarsdotti-databasepro-ls1c8yf2fby.ws-eu111.gitpod.io",
+    "8080-gomarsdotti-databasepro-ls1c8yf2fby.ws-eu111.gitpod.io",
 ]
 
 
