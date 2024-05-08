@@ -21,7 +21,10 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
+    likes = models.ManyToManyField(User, related_name="blog_post")
 
+    def total_likes(self):
+        return self.likes.count()
 
     class Meta:
         ordering = ["-created_on"]
@@ -42,9 +45,15 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now=True)
     challenge = models.FloatField(default=3.0)
+    likes = models.ManyToManyField(User, related_name="comment_post")
 
     class Meta:
         ordering = ["created_on"]
 
     def __str__(self):
         return f"Comment: {self.body} by {self.author}"
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)

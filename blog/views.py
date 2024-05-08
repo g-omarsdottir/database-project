@@ -52,6 +52,10 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
+    total_likes = post.likes.count()
+    #stuff = get_object_or_404(Post, id=pk)
+    #total_likes = stuff.total_likes()
+
 
     if request.method == "POST":
         print("Received a POST request")
@@ -77,6 +81,7 @@ def post_detail(request, slug):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
+            "total_likes": total_likes,
         },
     )
 
@@ -134,4 +139,11 @@ def comment_delete(request, slug, comment_id):
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def like_detail(request, slug, pk):
+    post = get_object_or_404(Post, id=request.POST.get("post_id"))
+    post.likes.add(request.user)
+    #return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
